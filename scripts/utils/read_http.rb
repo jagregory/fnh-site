@@ -2,6 +2,10 @@ require 'net/http'
 require 'uri'
 
 class HttpPage
+  def self.read_to_file(url, path)
+    `curl -0 #{url} -o #{path}`
+  end
+
   def self.read(host, page)
     headers, data = read_get(host, page)
 

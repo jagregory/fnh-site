@@ -1,52 +1,59 @@
-#!/usr/bin/env ruby
-
-require 'utils/read_http.rb'
-require 'utils/hasher.rb'
+require 'scripts/utils/read_http.rb'
+require 'scripts/utils/hasher.rb'
 require 'rubygems'
 require 'zip/zip'
 
-API_DIR = '../api'
-DOWNLOADS_DIR = '../dls'
-DOC_HASH_FILE = '../doc_csv.hash'
+API_DIR = 'api'
+DOC_HASH_FILE = 'doc_csv.hash'
 
-def get_latest_filename
-  path = get_actual_path('fluentnhibernate-docs-{build.number}.zip')
-  /[^\/]{1,}\.zip$/.match(path)[0]
-end
+class DocsUpdater
+  def execute
+    if has_update?
+      puts 'Getting docs zip'
+      download_file('fluentnhibernate-docs-{build.number}.zip')
+      save_hash
+    else
+      puts 'No updates available'
+    end
+  end
 
-def get_actual_path(filename)
-  headers = HttpPage.read_headers('teamcity.codebetter.com', "/guestAuth/repository/download/bt9/.lastSuccessful/#{filename}")
-  /(.*);/.match(headers['location'])[1]
-end
+  private
+  def has_update?
+    @hash = Hash.generate get_latest_filename
 
-def download_file(filename)
-  download_uri = URI.parse(get_actual_path(filename))  
-  download_name = /[^\/]{1,}\.zip$/.match(download_uri.path)[0]
-  
-  data = HttpPage.read(download_uri.host, download_uri.path)
-  
-  FileUtils.rm_r('../api_new') if File.exists? '../api_new'
-  Dir.mkdir(DOWNLOADS_DIR) unless File.exists? DOWNLOADS_DIR
-  File.open(File.join(DOWNLOADS_DIR, download_name), 'w') { |file|
-    file.write data
-  }
-  
-  Zip::ZipFile.foreach(File.join(DOWNLOADS_DIR, download_name)) do |f|
-    fpath = File.join('../api_new', f.name)
-    FileUtils.mkdir_p(File.dirname(fpath))
-    f.extract(fpath)
+    Hash.changed? @hash, DOC_HASH_FILE
   end
   
-  File.delete(File.join(DOWNLOADS_DIR, download_name)) if File.exists?(File.join(DOWNLOADS_DIR, download_name))
+  def save_hash
+    Hash.save @hash, DOC_HASH_FILE
+  end
   
-  puts `mv ../api ../api_old && mv ../api_new ../api && rm -r ../api_old`
-end
+  def get_latest_filename
+    path = get_actual_path('fluentnhibernate-docs-{build.number}.zip')
+    /[^\/]{1,}\.zip$/.match(path)[0]
+  end
 
-hash = Hash.generate get_latest_filename()
+  def get_actual_path(filename)
+    headers = HttpPage.read_headers('teamcity.codebetter.com', "/guestAuth/repository/download/bt9/.lastSuccessful/#{filename}")
+    /(.*);/.match(headers['location'])[1]
+  end
 
-if Hash.changed? hash, DOC_HASH_FILE
-  # new binary available, grab it
-  puts 'Getting docs zip'
-  download_file('fluentnhibernate-docs-{build.number}.zip')
-  Hash.save hash, DOC_HASH_FILE
+  def download_file(filename)
+    download_uri = URI.parse(get_actual_path(filename))  
+    download_name = /[^\/]{1,}\.zip$/.match(download_uri.path)[0]
+    
+    HttpPage.read_to_file download_uri, File.join(DOWNLOADS_DIR, download_name)
+    
+    FileUtils.rm_r('api_new') if File.exists? 'api_new'
+    
+    Zip::ZipFile.foreach(File.join(DOWNLOADS_DIR, download_name)) do |f|
+      fpath = File.join('api_new', f.name)
+      FileUtils.mkdir_p(File.dirname(fpath))
+      f.extract(fpath)
+    end
+    
+    `mv api api_old`
+    `mv api_new api`
+    `rm -r api_old`
+  end
 end

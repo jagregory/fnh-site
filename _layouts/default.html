@@ -2,7 +2,13 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
   <head> 
-    <title>{{ post.title }} - Fluent NHibernate</title> 
+    <title>
+      {% if page.title %}
+        {{ page.title }} - Fluent NHibernate
+      {% else %}
+        Fluent NHibernate
+      {% endif %}
+    </title> 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
     <meta name="description" content="Fluent NHibernate, a statically compiled alternative to NHibernate's standard hbm xml mapping."> 
     <meta name="keywords" content="orm, object relational mapping, nhibernate, mapping, hbm, xml, nh, fnh, fluent nhibernate, fluent interface, method chaining, static reflection" /> 

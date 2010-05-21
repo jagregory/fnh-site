@@ -1,2 +1,6 @@
+*.hash
+api/*
 _site
+repo
+dls
 *.swp

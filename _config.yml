@@ -1,0 +1,8 @@
+exclude:
+  - images
+  - stylesheets
+  - scripts
+  - repo
+  - dls
+  - api
+  - doc_csv.hash
