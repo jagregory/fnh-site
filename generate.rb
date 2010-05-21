@@ -1,4 +1,11 @@
 #!/usr/bin/env ruby
+
+if File.exists? '.git'
+  puts 'Refreshing source before updating site'
+  puts `git pull`
+  puts
+end
+
 require 'scripts/authors_update'
 require 'scripts/download_update'
 require 'scripts/doc_update'
