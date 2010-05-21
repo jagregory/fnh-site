@@ -6,7 +6,7 @@ class AuthorsUpdater
     authors[-1] = "and #{authors.last}." # sentencize it
     formatted_authors = authors.join(', ')
 
-    File.open(File.expand_path('_includes/authors.md'), 'w').puts formatted_authors
+    File.open(File.expand_path('_includes/authors.md'), 'w') {|f| f.write formatted_authors }
   end
 
   private

@@ -66,7 +66,7 @@ class DownloadUpdater
     table = '<table id="downloads"><thead><tr><th>Compiled</th><th>Source</th></tr></thead>'
     table += "<tbody><tr><td>#{binary}</td><td>#{source}</td></tr></tbody></table>"
     
-    File.open(File.expand_path('_includes/downloads.md'), 'w').puts table
+    File.open(File.expand_path('_includes/downloads.md'), 'w') {|f| f.write table }
   end
 
   def generate_ul(name)
