@@ -6,8 +6,13 @@ body {
 	line-height: 1.4em;
 }
 
+body#blog {
+  width: 600px;
+}
+
 h1 {
-	margin: 40px 0 20px 10px;
+  margin: 40px 0 20px 10px;
+  text-align: center;
 }
 
 h2 {
@@ -150,36 +155,29 @@ p.copy {
 	margin: -12px 10px 0 -10px;
 }
 
-#issues {
-	border: 1px solid #EAE9DA;
-	border-collapse: collapse;
-}
-
-#issues th, #issues td {
-	padding: 2px 4px;
-}
-
-#issues th {
-	background: #EAE9DA;
-	color: #666;
-}
-
-#issues tr.alt {
-	background: #EFEEE4;
-}
-
-#issues td.id {
-	vertical-align: top;
-}
-
-#issues td.summary {
-	font-size: 12px;
-}
-
-#issues td.summary a{
-	color: #000;
-}
-
 #downloads ul {
   list-style: none;
+}
+
+#post {
+  margin-bottom: 40px;
+}
+
+#post .meta {
+  color: #666;
+  font-size: 11px;
+  margin: 0;
+}
+
+#post .meta span {
+  color: #000;
+}
+
+code, pre {
+  font-family: Monaco, Consolas, Courier New, Monospace;
+}
+
+pre {
+  padding: 5px;
+  background: #EEE;
 }

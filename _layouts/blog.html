@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" href="/images/favicon.png" /> 
     <link type="application/atom+xml" title="Atom feed" href="http://feeds.feedburner.com/fnh" />
   </head> 
-  <body> 
+  <body id="blog"> 
     <div id="head"> 
       <h1><a href="/"><img src="http://fluentnhibernate.org/images/logo.png" alt="Fluent NHibernate - Fluent mapping for your model" /></a></h1> 
     
@@ -27,9 +27,14 @@
         <li><a href="http://groups.google.com/group/fluent-nhibernate">Mailing List</a></li> 
         <li><a href="/blog/index">Blog</a></li>
       </ul> 
-    </div> 
+    </div>
+
+    <div id="post">
+      <h2><a href="{{ permalink }}">{{ page.title }}</a></h2>
+      <p class="meta">by <span>{{ page.author }}</span> on <span>{{ page.date | date_to_string }}</span></p>
     
-    {{ content }}
+      {{ content }}
+    </div>
     
     <p class="copy">Fluent NHibernate is &copy; 2008-2010 <a href="http://jagregory.com">James Gregory</a> and contributors under the
       <a href="http://github.com/jagregory/fluent-nhibernate/raw/master/LICENSE.txt">BSD license</a>.</p> 

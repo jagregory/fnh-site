@@ -2,5 +2,5 @@
 api/*
 _site
 repo
-dls
+dls/*.zip
 *.swp
