@@ -20,12 +20,12 @@ AuthorsUpdater.new.execute
 puts
 puts '> Updating v1.x downloads...'
 
-DownloadUpdater.new('dls/v1.x', 'v1.x', 'bt9').execute
+DownloadUpdater.new('dls/v1.x', 'v1.x', 'bt281').execute
 
 puts
 puts '> Updating master downloads...'
 
-DownloadUpdater.new('dls/master', 'master', 'bt281').execute
+DownloadUpdater.new('dls/master', 'master', 'bt9').execute
 
 puts
 puts '> Updating docs...'
