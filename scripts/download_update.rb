@@ -10,15 +10,15 @@ class DownloadUpdater
   end
   
   def execute
-    if true
+    if has_update?
       puts 'Getting source zip'
-#      download_file('fluentnhibernate-source-{build.number}.zip')
+      download_file('fluentnhibernate-source-{build.number}.zip')
       
       puts 'Getting binary zip'
-#      download_file('fluentnhibernate-binary-{build.number}.zip')
+      download_file('fluentnhibernate-binary-{build.number}.zip')
 
       puts 'Pruning downloads'
-#      prune_downloads
+      prune_downloads
 
       puts 'Updating page'
       update_page
