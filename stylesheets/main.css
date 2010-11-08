@@ -219,3 +219,9 @@ p.mainDownload:hover {
 p.mainDownload a:hover {
 	text-decoration: none;
 }
+
+.subtext {
+	text-align: right;
+	font-size: 11px;
+	margin: 0;
+}
