@@ -10,8 +10,6 @@ require 'scripts/authors_update'
 require 'scripts/download_update'
 require 'scripts/doc_update'
 
-DOWNLOADS_DIR = 'dls'
-
 puts 'Generating site'
 puts '---------------'
 puts
@@ -20,9 +18,14 @@ puts '> Updating authors...'
 AuthorsUpdater.new.execute
 
 puts
-puts '> Updating downloads...'
+puts '> Updating v1.x downloads...'
 
-DownloadUpdater.new.execute
+DownloadUpdater.new('dls/v1.x', 'v1.x', 'bt9').execute
+
+puts
+puts '> Updating master downloads...'
+
+DownloadUpdater.new('dls/master', 'master', 'bt281').execute
 
 puts
 puts '> Updating docs...'
