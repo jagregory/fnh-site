@@ -7,6 +7,10 @@ API_DIR = 'api'
 DOC_HASH_FILE = 'doc_csv.hash'
 
 class DocsUpdater
+  def initialize(downloads_dir)
+    @downloads_dir = downloads_dir
+  end
+  
   def execute
     if has_update?
       puts 'Getting docs zip'
@@ -42,11 +46,11 @@ class DocsUpdater
     download_uri = URI.parse(get_actual_path(filename))  
     download_name = /[^\/]{1,}\.zip$/.match(download_uri.path)[0]
     
-    HttpPage.read_to_file download_uri, File.join(DOWNLOADS_DIR, download_name)
+    HttpPage.read_to_file download_uri, File.join(@downloads_dir, download_name)
     
     FileUtils.rm_r('api_new') if File.exists? 'api_new'
     
-    Zip::ZipFile.foreach(File.join(DOWNLOADS_DIR, download_name)) do |f|
+    Zip::ZipFile.foreach(File.join(@downloads_dir, download_name)) do |f|
       fpath = File.join('api_new', f.name)
       FileUtils.mkdir_p(File.dirname(fpath))
       f.extract(fpath)

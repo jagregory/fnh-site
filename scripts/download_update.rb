@@ -100,7 +100,7 @@ STR
       bin_path = path.gsub 'source', 'binary'
       
       revision = /([0-9]{1,})\.zip$/.match(f)[1]
-      text = "#{build} build #{revision}"
+      text = "#{build} build ##{revision}"
       text = "Latest #{build} build (##{revision})" if first
       t = t + '<tr>'
       t = t + "<td><a href=\"#{bin_path}\" onclick=\"javascript:pageTracker._trackEvent('Download', 'binary', '/downloads/#{@branch}/binary/#{revision}');\">#{text}</a></td>"

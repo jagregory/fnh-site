@@ -30,7 +30,7 @@ DownloadUpdater.new('dls/master', 'master', 'bt281').execute
 puts
 puts '> Updating docs...'
 
-DocsUpdater.new.execute
+DocsUpdater.new('dls/v1.x').execute
 
 puts
 puts '> Running Jekyll...'
