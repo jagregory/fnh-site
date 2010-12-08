@@ -20,7 +20,7 @@ AuthorsUpdater.new.execute
 puts
 puts '> Updating v1.x downloads...'
 
-DownloadUpdater.new('dls/v1.x', 'v1.x', 'bt281').execute
+MultiDownloadUpdater.new('dls/v1.x', 'v1.x', { 'NH2.1' => 'bt281', 'NH3.0' => 'bt295' }).execute
 
 puts
 puts '> Updating master downloads...'
