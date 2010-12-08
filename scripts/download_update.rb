@@ -192,8 +192,8 @@ class MultiDownloadUpdater
 <table id="downloads">
   <thead>
     <tr>
-      <th>Binary (NHibernate 3.0)</th>
-      <th>Binary (NHibernate 2.1.2)</th>
+      <th>Binary<br />(NHibernate 3.0)</th>
+      <th>Binary<br />(NHibernate 2.1.2)</th>
       <th>Source</th>
     </tr>
   </thead>
