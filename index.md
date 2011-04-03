@@ -8,7 +8,9 @@ layout: default
   <em>Get your fluent on.</em>
 </p>
 
-<p class="mainDownload"><a title="Download the latest Fluent NHibernate release (version 1.1)" href="/downloads/releases/fluentnhibernate-1.1.zip" onclick="javascript:pageTracker._trackEvent('Downloads', 'Release', '/downloads/releases/1.1');"><span>Download</span> Fluent NHibernate 1.1</a></p>
+<p class="mainDownload">
+  <a title="Download the latest Fluent NHibernate release (version 1.2)" href="/downloads/releases/fluentnhibernate-NH3.1-1.2.zip" onclick="javascript:pageTracker._trackEvent('Downloads', 'Release', '/downloads/releases/1.2-NH3.1');"><span>Download</span> Fluent NHibernate 1.2 <sub>for NHibernate 3.1</sub></a>
+</p>
     
 ## Getting started...
 <ul id="getting-started">

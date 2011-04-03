@@ -3,13 +3,18 @@ layout: default
 title: Downloads
 ---
 
-<p class="mainDownload"><a title="Download the latest Fluent NHibernate release (version 1.1)" href="/downloads/releases/fluentnhibernate-1.1.zip" onclick="javascript:pageTracker._trackEvent('Downloads', 'Release', '/downloads/releases/1.1');"><span>Download</span> Fluent NHibernate 1.1</a></p>
+<p class="mainDownload">
+  <a title="Download the latest Fluent NHibernate release (version 1.2)" href="/downloads/releases/fluentnhibernate-NH3.1-1.2.zip" onclick="javascript:pageTracker._trackEvent('Downloads', 'Release', '/downloads/releases/1.2-NH3.1');"><span>Download</span> Fluent NHibernate 1.2 <sub>for NHibernate 3.1</sub></a>
+</p>
+  
+<p class="subtext left"><a href="/downloads/releases/fluentnhibernate-NH2.1-1.2.zip" onclick="javascript:pageTracker._trackEvent('Downloads', 'Release', '/downloads/releases/1.2-NH2.1.2');">Download for NHibernate 2.1.2</a></p>
 
 <p class="subtext"><a href="javascript:void(0);" id="previousReleasesToggle">Show previous releases</a></p>
 
 <div id="previousReleases" class="alt">
 	<h3>Previous releases</h3>
 	<ul>
+	  <li><a href="/downloads/releases/fluentnhibernate-1.1.zip" onclick="javascript:pageTracker._trackEvent('Downloads', 'Release', '/downloads/releases/1.1');">Fluent NHibernate 1.1</a></li>
 	  <li><a href="/downloads/releases/fluentnhibernate-1.0RTM.zip" onclick="javascript:pageTracker._trackEvent('Downloads', 'Release', '/downloads/releases/1.0RTM');">Fluent NHibernate 1.0RTM</a></li>
 	  <li><a href="/downloads/releases/fluentnhibernate-1.0RC.zip" onclick="javascript:pageTracker._trackEvent('Downloads', 'Release', '/downloads/releases/1.0RC');">Fluent NHibernate 1.0RC</a></li>
 	</ul>
