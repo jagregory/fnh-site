@@ -34,6 +34,21 @@
       <p class="meta">by <span>{{ page.author }}</span> on <span>{{ page.date | date_to_string }}</span></p>
     
       {{ content }}
+      
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          var disqus_shortname = 'fluentnhibernate';
+          var disqus_identifier = '{{ permalink }}';
+          var disqus_url = '{{permalink}}';
+
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
     
     <p class="copy">Fluent NHibernate is &copy; 2008-2011 <a href="http://jagregory.com">James Gregory</a> and contributors under the
